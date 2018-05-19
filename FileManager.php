@@ -124,7 +124,6 @@ class FileManager {
       foreach ($data as $key => $row) {
         $convert_to_lower = $case_in_sensitive && (in_array(SORT_STRING, $sort_attributes) || in_array(SORT_REGULAR, $sort_attributes));
         $row_data = $convert_to_lower ? strtolower($row[$sort_column]) : $row[$sort_column];
-        var_dump($row_data);
         $col_lists[$sort_column][$key] = $row_data;
       }
       $args[] = &$col_lists[$sort_column];
