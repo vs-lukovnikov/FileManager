@@ -22,6 +22,7 @@
     'name' => 'desc',
     'type' => 'desc',
     'size' => 'desc',
+    'extension' => 'desc',
   ];
   ?>
   <title>Test File Manager</title>
@@ -55,6 +56,12 @@
         . realpath($cat); ?>">Type</a>
     </th>
     <th>
+      <a href="<?php echo $_SERVER['PHP_SELF'] . '?sort=extension&order='
+        . $order['extension']
+        . '&cat='
+        . realpath($cat); ?>">Extension</a>
+    </th>
+    <th>
       <a href="<?php echo $_SERVER['PHP_SELF'] . '?sort=size&order='
         . $order['size']
         . '&cat='
@@ -80,6 +87,7 @@
           ?>
         </td>
         <td><?php echo $file['type']; ?></td>
+        <td><?php echo $file['extension']; ?></td>
         <td><?php echo $file['size'] . ' kB'; ?></td>
       </tr>
     <?php endforeach; ?>

@@ -30,11 +30,11 @@ class FileManager {
   public static $sort_criteria = [
     'namedesc' => [
       'type' => [SORT_ASC],
-      'name' => [SORT_DESC, SORT_NATURAL],
+      'name' => [SORT_DESC, SORT_REGULAR],
     ],
     'nameasc' => [
       'type' => [SORT_ASC],
-      'name' => [SORT_ASC, SORT_NATURAL],
+      'name' => [SORT_ASC, SORT_REGULAR],
     ],
     'sizedesc' => [
       'type' => [SORT_ASC],
@@ -49,6 +49,12 @@ class FileManager {
     ],
     'typeasc' => [
       'type' => [SORT_ASC],
+    ],
+    'extensiondesc' => [
+      'extension' => [SORT_DESC,SORT_NATURAL],
+    ],
+    'extensionasc' => [
+      'extension' => [SORT_ASC,SORT_NATURAL],
     ],
   ];
 
@@ -118,6 +124,7 @@ class FileManager {
       foreach ($data as $key => $row) {
         $convert_to_lower = $case_in_sensitive && (in_array(SORT_STRING, $sort_attributes) || in_array(SORT_REGULAR, $sort_attributes));
         $row_data = $convert_to_lower ? strtolower($row[$sort_column]) : $row[$sort_column];
+        var_dump($row_data);
         $col_lists[$sort_column][$key] = $row_data;
       }
       $args[] = &$col_lists[$sort_column];
